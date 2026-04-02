@@ -4,7 +4,13 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
-add_filter('user_row_actions', 'dashboard_switch_to', 10, 2 );
+add_action('init', function () {
+  if (!session_id()) {
+    session_start();
+  }
+});
+
+add_filter('user_row_actions', 'dashboard_switch_to', 10, 2);
 
 function dashboard_switch_to($actions, $user)
 {
@@ -18,9 +24,9 @@ function dashboard_switch_to($actions, $user)
 
   $url = add_query_arg(
     [
-      'action' => 'switch_to',
+      'action'  => 'switch_to',
       'user_id' => $user->ID,
-      'nonce' =>  wp_create_nonce('switch_to_' . $user->ID)
+      'nonce'   => wp_create_nonce('switch_to_' . $user->ID)
     ],
     admin_url('admin-post.php')
   );
@@ -31,14 +37,15 @@ function dashboard_switch_to($actions, $user)
 
 add_action('admin_post_switch_to', 'handle_switch');
 
-function handle_switch() {
+function handle_switch()
+{
   $user_id = isset($_GET['user_id']) ? (int) $_GET['user_id'] : 0;
 
   if (!$user_id) {
     return;
   }
 
-  if (!wp_verify_nonce($_GET['nonce'], 'switch_to_' . $user_id)) {
+  if (!wp_verify_nonce($_GET['nonce'] ?? '', 'switch_to_' . $user_id)) {
     wp_die('Action non autorisée.');
   }
 
@@ -46,7 +53,6 @@ function handle_switch() {
     wp_die('Accès refusé.');
   }
 
-  session_start();
   $_SESSION['switch_to_original_user'] = get_current_user_id();
 
   wp_set_current_user($user_id);
