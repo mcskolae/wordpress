@@ -46,7 +46,6 @@ function handle_switch() {
     wp_die('Accès refusé.');
   }
 
-  // Add original user into cookies to switch back later
   session_start();
   $_SESSION['switch_to_original_user'] = get_current_user_id();
 

@@ -10,7 +10,9 @@ function render_switch_back()
 {
   session_start();
 
-  if (empty($_SESSION['switch_to_original_user']));
+  if (empty($_SESSION['switch_to_original_user'])) {
+    return;
+  }
 
   $url = add_query_arg(
     [
