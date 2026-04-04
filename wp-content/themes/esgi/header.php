@@ -32,15 +32,13 @@
                     'theme_location' => 'primary',
                     'menu_id'        => 'primary-menu',
                     'container'      => false,
-                    'fallback_cb'    => function () {
+                    'fallback_cb'    => function() {
                         echo '<ul id="primary-menu">';
-                        echo '<li><a href="' . esc_url(home_url('/')) . '">' . __('Accueil', 'esgi') . '</a></li>';
+                        echo '<li><a href="' . esc_url(home_url('/')) . '">Accueil</a></li>';
                         if (function_exists('wc_get_page_id')) {
-                            echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '">' . __('Boutique', 'esgi') . '</a></li>';
-                            echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('myaccount'))) . '">' . __('Mon compte', 'esgi') . '</a></li>';
+                            echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '">Boutique</a></li>';
+                            echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('myaccount'))) . '">Mon compte</a></li>';
                         }
-                        echo '<li><a href="' . esc_url(get_permalink(get_page_by_path('a-propos'))) . '">' . __('À propos', 'esgi') . '</a></li>';
-                        echo '<li><a href="' . esc_url(get_permalink(get_page_by_path('contact'))) . '">' . __('Contact', 'esgi') . '</a></li>';
                         echo '</ul>';
                     },
                 ]);

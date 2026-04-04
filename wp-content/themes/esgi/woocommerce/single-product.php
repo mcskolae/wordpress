@@ -7,11 +7,9 @@ get_header('shop');
 <main id="main" class="site-main">
     <div class="container">
 
-        <?php
-        while (have_posts()) :
-            the_post();
+        <?php while (have_posts()): the_post();
 
-            echo '<nav class="woocommerce-breadcrumb" aria-label="' . esc_attr__('Fil d\'Ariane', 'esgi') . '">';
+            echo '<nav class="woocommerce-breadcrumb" aria-label="Fil d\'Ariane">';
             woocommerce_breadcrumb();
             echo '</nav>';
 
@@ -33,15 +31,12 @@ get_header('shop');
 
                     echo '<div style="margin-top:24px;padding:20px;background:var(--color-bg);border-radius:var(--radius);display:flex;flex-wrap:wrap;gap:16px;">';
                     $guarantees = [
-                        '🚚' => __('Livraison gratuite dès 50 €', 'esgi'),
-                        '🔄' => __('Retours sous 30 jours', 'esgi'),
-                        '🔒' => __('Paiement sécurisé', 'esgi'),
+                        'Livraison gratuite dès 50 €',
+                        'Retours sous 30 jours',
+                        'Paiement sécurisé',
                     ];
-                    foreach ($guarantees as $icon => $text) {
-                        echo '<div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--color-muted);">';
-                        echo '<span>' . esc_html($icon) . '</span>';
-                        echo '<span>' . esc_html($text) . '</span>';
-                        echo '</div>';
+                    foreach ($guarantees as $text) {
+                        echo '<div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--color-muted);">' . esc_html($text) . '</div>';
                     }
                     echo '</div>';
                     ?>
