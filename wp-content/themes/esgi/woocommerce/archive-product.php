@@ -26,14 +26,10 @@ get_header('shop');
 
                 <div class="sidebar-widget">
                     <h3>Recherche</h3>
-                    <form method="get" action="<?php echo esc_url(home_url('/')); ?>">
+                    <form method="get" action="<?php echo esc_url(home_url('/')); ?>" class="shop-search-form">
                         <input type="hidden" name="post_type" value="product">
-                        <div style="display:flex;gap:8px;">
-                            <input type="search" name="s" value="<?php echo esc_attr(get_search_query()); ?>"
-                                placeholder="Rechercher..."
-                                style="flex:1;padding:10px 12px;border:2px solid var(--color-border);border-radius:var(--radius);font-family:var(--font-base);">
-                            <button type="submit" style="padding:10px 14px;background:var(--color-accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;">→</button>
-                        </div>
+                        <input type="search" name="s" value="<?php echo esc_attr(get_search_query()); ?>" placeholder="Rechercher un produit...">
+                        <button type="submit">Rechercher</button>
                     </form>
                 </div>
 
@@ -42,20 +38,18 @@ get_header('shop');
                     <?php
                     $cats = get_terms([
                         'taxonomy'   => 'product_cat',
-                        'hide_empty' => true,
-                        'exclude'    => [get_option('default_product_cat')],
+                        'hide_empty' => false,
                     ]);
                     if (!is_wp_error($cats) && !empty($cats)):
                     ?>
-                    <ul style="display:flex;flex-direction:column;gap:8px;">
+                    <ul class="shop-cat-list">
                         <?php foreach ($cats as $cat):
                             $active = is_tax('product_cat', $cat->slug);
                         ?>
                         <li>
-                            <a href="<?php echo esc_url(get_term_link($cat)); ?>"
-                               style="display:flex;justify-content:space-between;align-items:center;color:<?php echo $active ? 'var(--color-accent)' : 'var(--color-primary)'; ?>;font-weight:<?php echo $active ? '700' : '400'; ?>;">
+                            <a href="<?php echo esc_url(get_term_link($cat)); ?>" class="shop-cat-link <?php echo $active ? 'is-active' : ''; ?>">
                                 <?php echo esc_html($cat->name); ?>
-                                <span style="background:var(--color-bg);padding:2px 8px;border-radius:100px;font-size:.75rem;color:var(--color-muted);"><?php echo absint($cat->count); ?></span>
+                                <span><?php echo absint($cat->count); ?></span>
                             </a>
                         </li>
                         <?php endforeach; ?>
