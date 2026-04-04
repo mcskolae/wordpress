@@ -79,6 +79,9 @@ ul { list-style: none; }
     box-shadow: 0 2px 8px rgba(0,0,0,.3);
 }
 
+.admin-bar .site-header { top: 32px; }
+@media screen and (max-width: 782px) { .admin-bar .site-header { top: 46px; } }
+
 .site-header .container {
     display: flex;
     align-items: center;
@@ -974,6 +977,9 @@ ul { list-style: none; }
    HOMEPAGE
    ========================================================= */
 .home-main { padding: 0; }
+
+body.home #content { background: var(--color-primary); }
+body.home .site-main { padding: 0; }
 
 .home-hero {
     position: relative;
