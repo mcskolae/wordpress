@@ -34,11 +34,11 @@
                     'container'      => false,
                     'fallback_cb'    => function() {
                         echo '<ul id="primary-menu">';
-                        echo '<li><a href="' . esc_url(home_url('/')) . '">Accueil</a></li>';
                         if (function_exists('wc_get_page_id')) {
                             echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '">Boutique</a></li>';
                             echo '<li><a href="' . esc_url(get_permalink(wc_get_page_id('myaccount'))) . '">Mon compte</a></li>';
                         }
+                        echo '<li><a href="' . esc_url(home_url('/lookbook/')) . '">Lookbook</a></li>';
                         echo '</ul>';
                     },
                 ]);

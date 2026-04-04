@@ -109,8 +109,9 @@ function esgi_inject_wc_nav_items(string $items, $args): string {
     $shop    = get_permalink(wc_get_page_id('shop'));
     $account = get_permalink(wc_get_page_id('myaccount'));
 
-    $extra  = '<li class="menu-item"><a href="' . esc_url($shop) . '">' . __('Boutique', 'esgi') . '</a></li>';
-    $extra .= '<li class="menu-item"><a href="' . esc_url($account) . '">' . __('Mon compte', 'esgi') . '</a></li>';
+    $extra  = '<li class="menu-item"><a href="' . esc_url($shop) . '">Boutique</a></li>';
+    $extra .= '<li class="menu-item"><a href="' . esc_url($account) . '">Mon compte</a></li>';
+    $extra .= '<li class="menu-item"><a href="' . esc_url(home_url('/lookbook/')) . '">Lookbook</a></li>';
 
     return $items . $extra;
 }
