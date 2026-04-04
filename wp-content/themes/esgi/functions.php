@@ -101,21 +101,6 @@ function esgi_cart_link(): void {
     );
 }
 
-function esgi_inject_wc_nav_items(string $items, $args): string {
-    if ($args->theme_location !== 'primary' || !function_exists('wc_get_page_id')) {
-        return $items;
-    }
-
-    $shop    = get_permalink(wc_get_page_id('shop'));
-    $account = get_permalink(wc_get_page_id('myaccount'));
-
-    $extra  = '<li class="menu-item"><a href="' . esc_url($shop) . '">Boutique</a></li>';
-    $extra .= '<li class="menu-item"><a href="' . esc_url($account) . '">Mon compte</a></li>';
-    $extra .= '<li class="menu-item"><a href="' . esc_url(home_url('/lookbook/')) . '">Lookbook</a></li>';
-
-    return $items . $extra;
-}
-add_filter('wp_nav_menu_items', 'esgi_inject_wc_nav_items', 10, 2);
 
 add_filter('excerpt_length', fn() => 24);
 add_filter('excerpt_more', fn() => '&hellip;');
