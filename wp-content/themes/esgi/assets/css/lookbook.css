@@ -1,0 +1,67 @@
+/* Archive lookbook */
+.lookbook-hero-subtitle { opacity: .75; }
+.lookbook-card-season { font-size: .75rem; color: var(--color-accent); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+.lookbook-card-title { margin: 4px 0 8px; }
+.lookbook-card-title a { color: var(--color-primary); }
+.lookbook-card-stylist { font-size: .85rem; color: var(--color-muted); }
+.lookbook-card-link { margin-top: 12px; font-size: .85rem; padding: 8px 16px; }
+.lookbook-empty { text-align: center; color: var(--color-muted); }
+
+/* Single lookbook — image */
+.look-image {
+    max-width: 860px;
+    margin: 0 auto 32px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.look-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Single lookbook — meta */
+.look-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 860px;
+    margin: 0 auto 24px;
+}
+
+.look-meta__season {
+    font-size: .8rem;
+    color: var(--color-accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.look-meta__stylist { font-size: .9rem; color: var(--color-muted); }
+
+/* Single lookbook — description */
+.look-description {
+    max-width: 860px;
+    margin: 0 auto 48px;
+    background: var(--color-white);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Single lookbook — products */
+.look-products { margin-top: 48px; }
+.look-products__title { font-size: 1.3rem; margin-bottom: 24px; }
+.look-products .product-card-body { display: flex; flex-direction: column; gap: 8px; }
+.look-products .product-card-body .btn { align-self: flex-start; font-size: .85rem; }
+.look-product-name a { color: var(--color-primary); }
+
+/* Single lookbook — navigation */
+.look-nav { margin-top: 40px; display: flex; justify-content: space-between; gap: 16px; }
+.look-nav .btn { flex: 1; }
+.look-nav .btn:last-child { text-align: right; }

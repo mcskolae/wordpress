@@ -67,6 +67,8 @@ ul { list-style: none; }
     padding: 60px 0;
 }
 
+.site-main.has-hero { padding: 0; }
+
 /* =========================================================
    HEADER
    ========================================================= */
@@ -763,6 +765,10 @@ ul { list-style: none; }
 
 .page-hero h1 { font-size: 2.2rem; }
 .page-hero .breadcrumb { opacity: .6; font-size: .9rem; margin-bottom: 12px; }
+.page-hero .breadcrumb a { color: inherit; }
+
+.footer-brand-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.footer-bottom-link { color: var(--color-accent); }
 
 /* About page */
 .about-grid {
@@ -1135,3 +1141,4 @@ body.home .site-main { padding: 0; }
     .btn--primary, .btn--ghost { width: 100%; justify-content: center; }
     .site-title { font-size: 1.1rem; }
 }
+

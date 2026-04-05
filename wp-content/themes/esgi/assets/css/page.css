@@ -1,0 +1,6 @@
+/* Static pages */
+.page-body { padding: 60px 0; }
+.page-content { max-width: 800px; margin: 0 auto; background: var(--color-white); border-radius: 16px; padding: 48px; box-shadow: var(--shadow); }
+
+/* 404 */
+.error-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }

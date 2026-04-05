@@ -115,13 +115,20 @@ function esgi_lookbook_metabox_callback(WP_Post $post): void {
             </td>
         </tr>
         <tr>
-            <th><label for="look_product_ids"><?php esc_html_e('Produits associés (IDs)', 'esgi-plugin'); ?></label></th>
+            <th><label for="look_product_ids"><?php esc_html_e('Produits associés', 'esgi-plugin'); ?></label></th>
             <td>
-                <input type="text" id="look_product_ids" name="look_product_ids"
-                    value="<?php echo esc_attr($products); ?>"
-                    class="regular-text"
-                    placeholder="<?php esc_attr_e('ex: 12, 34, 56', 'esgi-plugin'); ?>">
-                <p class="description"><?php esc_html_e('Séparez les IDs par des virgules.', 'esgi-plugin'); ?></p>
+                <?php
+                $selected_ids = array_filter(array_map('intval', explode(',', $products)));
+                $all_products = wc_get_products(['status' => 'publish', 'limit' => -1, 'orderby' => 'title', 'order' => 'ASC']);
+                ?>
+                <select id="look_product_ids" name="look_product_ids[]" multiple style="min-width:300px;height:160px;">
+                    <?php foreach ($all_products as $product): ?>
+                    <option value="<?php echo esc_attr($product->get_id()); ?>" <?php echo in_array($product->get_id(), $selected_ids, true) ? 'selected' : ''; ?>>
+                        <?php echo esc_html($product->get_name()); ?>
+                    </option>
+                    <?php endforeach; ?>
+                </select>
+                <p class="description"><?php esc_html_e('Ctrl+clic (ou Cmd+clic) pour sélectionner plusieurs produits.', 'esgi-plugin'); ?></p>
             </td>
         </tr>
     </table>
@@ -145,7 +152,7 @@ function esgi_save_lookbook_meta(int $post_id): void {
     $fields = [
         '_look_stylist'     => sanitize_text_field($_POST['look_stylist'] ?? ''),
         '_look_season'      => sanitize_text_field($_POST['look_season'] ?? ''),
-        '_look_product_ids' => sanitize_text_field($_POST['look_product_ids'] ?? ''),
+        '_look_product_ids' => implode(',', array_filter(array_map('intval', $_POST['look_product_ids'] ?? []))),
     ];
 
     foreach ($fields as $key => $value) {

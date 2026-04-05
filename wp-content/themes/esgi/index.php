@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
 <main id="main" class="site-main">
-    <div class="container" style="max-width:900px;">
+    <div class="container blog-container">
 
-        <h1 style="margin-bottom:40px;">Articles</h1>
+        <h1 class="blog-title">Articles</h1>
 
         <?php if (have_posts()): ?>
 
@@ -13,13 +13,13 @@
 
                     <?php if (has_post_thumbnail()): ?>
                     <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('esgi-card', ['style' => 'width:100%;height:200px;object-fit:cover;']); ?>
+                        <?php the_post_thumbnail('esgi-card'); ?>
                     </a>
                     <?php endif; ?>
 
                     <div class="product-card-body">
-                        <h3 style="font-size:1rem;"><a href="<?php the_permalink(); ?>" style="color:var(--color-primary);"><?php the_title(); ?></a></h3>
-                        <p style="font-size:.85rem;color:var(--color-muted);"><?php the_excerpt(); ?></p>
+                        <h3 class="blog-card-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                        <p class="blog-card-excerpt"><?php the_excerpt(); ?></p>
                     </div>
                 </article>
                 <?php endwhile; ?>

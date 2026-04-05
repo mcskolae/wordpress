@@ -6,9 +6,9 @@
             <div class="footer-grid">
 
                 <div class="footer-col footer-brand">
-                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+                    <div class="footer-brand-header">
                         <div class="site-logo" aria-hidden="true">E</div>
-                        <span class="site-title" style="font-size:1.1rem;">ESGI</span>
+                        <span class="site-title">ESGI</span>
                     </div>
                     <p>Votre boutique lifestyle & streetwear. Des produits soigneusement sélectionnés pour votre style de vie urbain.</p>
                 </div>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; <?php echo esc_html(gmdate('Y')); ?> <a href="<?php echo esc_url(home_url('/')); ?>" style="color:var(--color-accent);">ESGI</a>. Tous droits réservés.</p>
+                <p>&copy; <?php echo esc_html(gmdate('Y')); ?> <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-bottom-link">ESGI</a>. Tous droits réservés.</p>
                 <p>
                     <?php
                     wp_nav_menu([

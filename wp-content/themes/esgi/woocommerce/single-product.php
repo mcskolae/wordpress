@@ -29,14 +29,14 @@ get_header('shop');
                     <?php
                     do_action('woocommerce_single_product_summary');
 
-                    echo '<div style="margin-top:24px;padding:20px;background:var(--color-bg);border-radius:var(--radius);display:flex;flex-wrap:wrap;gap:16px;">';
+                    echo '<div class="product-guarantees">';
                     $guarantees = [
                         'Livraison gratuite dès 50 €',
                         'Retours sous 30 jours',
                         'Paiement sécurisé',
                     ];
                     foreach ($guarantees as $text) {
-                        echo '<div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--color-muted);">' . esc_html($text) . '</div>';
+                        echo '<div class="product-guarantee-item">' . esc_html($text) . '</div>';
                     }
                     echo '</div>';
                     ?>

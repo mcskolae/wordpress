@@ -4,21 +4,7 @@ defined('ABSPATH') || exit;
 get_header('shop');
 ?>
 
-<div class="shop-header">
-    <div class="container">
-        <h1><?php woocommerce_page_title(); ?></h1>
-        <?php
-        if (is_product_category()) {
-            $desc = term_description();
-            if ($desc) echo '<p>' . wp_kses_post($desc) . '</p>';
-        } else {
-            echo '<p>Découvrez toute notre collection streetwear</p>';
-        }
-        ?>
-    </div>
-</div>
-
-<main id="main" class="site-main" style="padding:0;">
+<main id="main" class="site-main">
     <div class="container">
         <div class="shop-layout">
 
@@ -67,7 +53,7 @@ get_header('shop');
 
                 <?php if (woocommerce_product_loop()): ?>
 
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+                    <div class="shop-controls">
                         <?php woocommerce_result_count(); ?>
                         <?php woocommerce_catalog_ordering(); ?>
                     </div>

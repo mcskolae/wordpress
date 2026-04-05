@@ -1,23 +1,23 @@
 <?php get_header(); ?>
 
 <main id="main" class="site-main">
-    <div class="container" style="max-width:860px;">
+    <div class="container single-post-container">
 
         <?php while (have_posts()): the_post(); ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-            <header style="margin-bottom:32px;">
-                <p style="font-size:.85rem;color:var(--color-muted);margin-bottom:12px;">
-                    <a href="<?php echo esc_url(home_url('/')); ?>" style="color:var(--color-muted);">Accueil</a>
+            <header class="post-header">
+                <p class="post-breadcrumb">
+                    <a href="<?php echo esc_url(home_url('/')); ?>">Accueil</a>
                     &rsaquo;
-                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('blog'))); ?>" style="color:var(--color-muted);">Blog</a>
+                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('blog'))); ?>">Blog</a>
                     &rsaquo; <?php the_title(); ?>
                 </p>
 
-                <h1 style="font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:16px;"><?php the_title(); ?></h1>
+                <h1 class="post-title"><?php the_title(); ?></h1>
 
-                <div style="display:flex;align-items:center;gap:16px;color:var(--color-muted);font-size:.9rem;flex-wrap:wrap;">
+                <div class="post-info">
                     <span><?php echo esc_html(get_the_date()); ?></span>
                     <span><?php the_author(); ?></span>
                     <?php $cats = get_the_category();
@@ -28,12 +28,12 @@
             </header>
 
             <?php if (has_post_thumbnail()): ?>
-            <div style="margin-bottom:32px;border-radius:16px;overflow:hidden;">
-                <?php the_post_thumbnail('esgi-hero', ['style' => 'width:100%;height:400px;object-fit:cover;']); ?>
+            <div class="post-thumbnail">
+                <?php the_post_thumbnail('esgi-hero'); ?>
             </div>
             <?php endif; ?>
 
-            <div class="entry-content" style="background:var(--color-white);border-radius:16px;padding:40px;box-shadow:var(--shadow);line-height:1.8;font-size:1.05rem;">
+            <div class="post-content entry-content">
                 <?php the_content(); ?>
             </div>
 
@@ -41,17 +41,17 @@
 
         <?php endwhile; ?>
 
-        <nav style="margin-top:40px;display:flex;justify-content:space-between;gap:16px;">
+        <nav class="post-nav">
             <?php
             $prev = get_previous_post();
             $next = get_next_post();
             if ($prev): ?>
-            <a href="<?php echo esc_url(get_permalink($prev)); ?>" class="btn btn-outline" style="flex:1;">
+            <a href="<?php echo esc_url(get_permalink($prev)); ?>" class="btn btn-outline">
                 &larr; <?php echo esc_html(get_the_title($prev)); ?>
             </a>
             <?php endif;
             if ($next): ?>
-            <a href="<?php echo esc_url(get_permalink($next)); ?>" class="btn btn-outline" style="flex:1;text-align:right;">
+            <a href="<?php echo esc_url(get_permalink($next)); ?>" class="btn btn-outline">
                 <?php echo esc_html(get_the_title($next)); ?> &rarr;
             </a>
             <?php endif; ?>

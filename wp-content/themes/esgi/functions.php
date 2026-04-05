@@ -38,6 +38,38 @@ function esgi_scripts() {
 }
 add_action('wp_enqueue_scripts', 'esgi_scripts');
 
+function esgi_lookbook_styles() {
+    if (!is_singular('lookbook') && !is_post_type_archive('lookbook')) {
+        return;
+    }
+    wp_enqueue_style('esgi-lookbook', get_template_directory_uri() . '/assets/css/lookbook.css', ['esgi-style'], '1.0.0');
+}
+add_action('wp_enqueue_scripts', 'esgi_lookbook_styles');
+
+function esgi_blog_styles() {
+    if (!is_singular('post') && !is_home() && !is_archive()) {
+        return;
+    }
+    wp_enqueue_style('esgi-blog', get_template_directory_uri() . '/assets/css/blog.css', ['esgi-style'], '1.0.0');
+}
+add_action('wp_enqueue_scripts', 'esgi_blog_styles');
+
+function esgi_page_styles() {
+    if (!is_page() && !is_404()) {
+        return;
+    }
+    wp_enqueue_style('esgi-page', get_template_directory_uri() . '/assets/css/page.css', ['esgi-style'], '1.0.0');
+}
+add_action('wp_enqueue_scripts', 'esgi_page_styles');
+
+function esgi_woocommerce_custom_styles() {
+    if (!function_exists('is_woocommerce') || !is_woocommerce()) {
+        return;
+    }
+    wp_enqueue_style('esgi-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', ['esgi-style'], '1.0.0');
+}
+add_action('wp_enqueue_scripts', 'esgi_woocommerce_custom_styles');
+
 function esgi_new_product_badge() {
     global $product;
     if (!$product instanceof WC_Product) {

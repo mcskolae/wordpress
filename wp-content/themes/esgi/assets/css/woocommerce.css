@@ -1,0 +1,6 @@
+/* Shop archive */
+.shop-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+
+/* Single product */
+.product-guarantees { margin-top: 24px; padding: 20px; background: var(--color-bg); border-radius: var(--radius); display: flex; flex-wrap: wrap; gap: 16px; }
+.product-guarantee-item { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--color-muted); }
